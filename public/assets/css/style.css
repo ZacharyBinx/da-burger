@@ -1,7 +1,15 @@
+html, body {
+  background-color: #2B141C;
+}
+
+.burger-head {
+  background-color: #723B48;
+}
+
 li {
   padding: 5px;
   margin: 5px;
-  background: #faebd7;
+  background: #E84D01;
 }
 
 .label {
