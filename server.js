@@ -4,7 +4,6 @@ var PORT = process.env.JAWSDB_URL || 8080;
 
 var app = express();
 
-if (process.env.JAWSDB_URL) {mysql.createConnection(process.env.JAWSDB_URL)};
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
 
