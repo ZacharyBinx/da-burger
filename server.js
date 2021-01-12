@@ -1,8 +1,23 @@
 var express = require("express");
 
-var PORT = process.env.PORT || 8080;
-
 var app = express();
+
+var mysql = require('mysql');
+
+var connection;
+if (process.env.JAWSDB_URL) {
+    // Database is JawsDB on Heroku
+    connection = mysql.createConnection(process.env.JAWSDB_URL);
+} else {
+    // Database is local
+    connection = mysql.createConnection({
+        port: 3306,
+        host: 'localhost',
+        user: 'root',
+        password: 'root',
+        database: 'burger_db'
+    })
+};
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -23,7 +38,7 @@ var routes = require("./controllers/burgerController.js");
 app.use(routes);
 
 // Start our server so that it can begin listening to client requests.
-app.listen(PORT, function() {
+app.listen(connection, function() {
   // Log (server-side) when our server has started
   console.log("Server listening on: http://localhost:" + PORT);
 });
